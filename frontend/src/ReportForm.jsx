@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 import axios from "axios";
 
 export default function ReportForm({ setData }) {
-    const [token, setToken] = useState("yvl5t4ona3541uj7tsojzghavc0mw1xt");
+    const [token, setToken] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [loading, setLoading] = useState(false);
@@ -48,7 +48,7 @@ export default function ReportForm({ setData }) {
         setLoading(true);
 
         try {
-            const res = await axios.post("http://localhost:5000/get-report", {
+            const res = await axios.post("https://aarki-dashboard.onrender.com", {
                 token,
                 start_date: startDate,
                 end_date: endDate,

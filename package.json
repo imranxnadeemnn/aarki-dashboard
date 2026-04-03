@@ -1,0 +1,36 @@
+{
+  "name": "aarki-dashboard",
+  "version": "1.0.0",
+  "description": "Aarki Cost Reporting Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "backend": "node backend/server.js",
+    "dev": "concurrently -k \"npm run backend\" \"wait-on http://localhost:5000\" \"electron .\"",
+    "build-frontend": "cd frontend && npm run build",
+    "dist": "npm run build-frontend && electron-builder"
+  },
+  "author": "Imran",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.0.1"
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.aarki.dashboard",
+    "productName": "Aarki Dashboard",
+    "files": [
+      "main.js",
+      "backend/**/*",
+      "frontend/dist/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "target": "dmg",
+      "identity": "null"
+    }
+  }
+}
